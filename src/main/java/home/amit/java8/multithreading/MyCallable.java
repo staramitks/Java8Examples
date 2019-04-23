@@ -9,13 +9,18 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import org.omg.SendingContext.RunTime;
+
 public class MyCallable implements Callable<String> {
 
     @Override
     public String call() throws Exception {
         Thread.sleep(1000);
         //return the thread name executing this callable task
+        Runtime runtime = Runtime.getRuntime();
+        
         return Thread.currentThread().getName();
+        
     }
     
     public static void main(String args[]){
