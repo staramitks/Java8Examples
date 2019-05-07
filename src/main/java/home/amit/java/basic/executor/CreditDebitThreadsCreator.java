@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author singami2
+ * @author guddoo
  *
  */
 public class CreditDebitThreadsCreator {
