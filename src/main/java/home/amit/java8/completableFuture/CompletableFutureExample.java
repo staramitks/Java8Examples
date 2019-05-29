@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class CompletableFutureExample {
 	
@@ -34,10 +36,29 @@ public class CompletableFutureExample {
 		CompletableFuture<Map<String,String>> extSlack1=CompletableFuture.supplyAsync(()->getExternalSlackMap());
 		CompletableFuture<Map<String,String>> cacheMap1=CompletableFuture.supplyAsync(()->getCacheMap());
 		CompletableFuture<Map<String,String>> fileSysMap1=CompletableFuture.supplyAsync(()->getFileSysMap());
+		
+		CompletableFuture<Map<String,String>> productMap2=CompletableFuture.supplyAsync(()->getProductsMap()).exceptionally(exception->{System.err.print("exception "+exception.getMessage());
+		return new HashMap<String,String>();});
+		CompletableFuture<Map<String,String>> intSlack2=CompletableFuture.supplyAsync(()->getInternalSlackMap());
+		CompletableFuture<Map<String,String>> extSlack2=CompletableFuture.supplyAsync(()->getExternalSlackMap());
+		CompletableFuture<Map<String,String>> cacheMap2=CompletableFuture.supplyAsync(()->getCacheMap());
+		CompletableFuture<Map<String,String>> fileSysMap2=CompletableFuture.supplyAsync(()->getFileSysMap());
+		
+		
+		CompletableFuture<Integer> completableFuture = CompletableFuture
+	              .supplyAsync(() -> {
+	                  System.out.println("running task");
+	                  return 10 / 0;
+	              }).exceptionally(exception -> {
+	                  System.err.println("exception: " + exception);
+	                  return 1;
+	              });
+		
+		
 		CompletableFuture<Void> allResults = CompletableFuture.allOf(perfMap1,productMap1,intSlack1,extSlack1,cacheMap1,fileSysMap1);
 		try {
-			allResults.get();
-		} catch (InterruptedException | ExecutionException e1) {
+			allResults.get(5, TimeUnit.MINUTES);
+		} catch (InterruptedException | ExecutionException | TimeoutException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
