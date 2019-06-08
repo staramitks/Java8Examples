@@ -16,6 +16,7 @@ than returning the actual object reference.
 
 
 import java.util.HashMap;
+import java.util.Map;
 
 public final class FinalClassExample {
 
@@ -35,9 +36,12 @@ public final class FinalClassExample {
 	/**
 	 * Accessor function for mutable objects
 	 */
-	public HashMap<String, String> getTestMap() {
+	public Map<String, String> getTestMap() {
 		//return testMap;
-		return (HashMap<String, String>) testMap.clone();
+		//Collections.unmodifiableMap(testMap);
+		return 
+				(HashMap<String, String>) testMap.clone();
+		
 	}
 
 	/**
@@ -47,7 +51,7 @@ public final class FinalClassExample {
 	 * @param hm
 	 */
 	
-	public FinalClassExample(int i, String n, HashMap<String,String> hm){
+	public FinalClassExample(int i, String n, Map<String,String> hm){
 		System.out.println("Performing Deep  for Object initialization");
 		this.id=i;
 		this.name=n;
@@ -84,7 +88,7 @@ public final class FinalClassExample {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		HashMap<String, String> h1 = new HashMap<String,String>();
+		Map<String, String> h1 = new HashMap<String,String>();
 		h1.put("1", "first");
 		h1.put("2", "second");
 		
@@ -110,7 +114,7 @@ public final class FinalClassExample {
 		System.out.println("ce name after local variable change:"+ce.getName());
 		System.out.println("ce testMap after local variable change:"+ce.getTestMap());
 		
-		HashMap<String, String> hmTest = ce.getTestMap();
+		Map<String, String> hmTest = ce.getTestMap();
 		hmTest.put("4", "new");
 		
 		System.out.println("ce testMap after changing variable from accessor methods:"+ce.getTestMap());

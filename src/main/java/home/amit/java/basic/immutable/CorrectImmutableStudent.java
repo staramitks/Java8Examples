@@ -7,7 +7,7 @@ package home.amit.java.basic.immutable;
  * 
  *  //Default version of clone() method. It creates shallow copy of an object.
  
-
+while setting and getting objects from immutable list always use defensive copy mechanism to create a new object first then assign values of objects to the newly created object
  * 
  * 
  */
@@ -50,8 +50,8 @@ public final class CorrectImmutableStudent {
         CorrectImmutableStudent student = new CorrectImmutableStudent(1, "Alex", age);
         System.out.println("Alex age year before modification = " + student.getAge().getYear());
         age.setYear(1993);
-        
+        System.out.println("Alex age year after 1st modification = " + student.getAge().getYear());
         student.getAge().setYear(1994);
-        System.out.println("Alex age year after modification = " + student.getAge().getYear());
+        System.out.println("Alex age year after second modification = " + student.getAge().getYear());
     }
 }

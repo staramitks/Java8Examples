@@ -1,8 +1,10 @@
 /**
  * 
  */
-package home.amit.java.basic.multithreading;
+package home.amit.java8.multithreading;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CompletableFuture;
@@ -44,6 +46,8 @@ public class ProducerConsumerRunner {
 		callViaThreadInvocation(producerThread,consumerThread);
 		
 		callViaCompletableFuture(producerThread,consumerThread);
+		
+		//List<Future<String>> futures = executorService.invokeAll(callableTasks);
 	
 		
 	}
@@ -88,6 +92,7 @@ public class ProducerConsumerRunner {
 		// TODO Auto-generated method stub
 		
 		ExecutorService executorService = Executors.newFixedThreadPool(2);
+		List<Runnable> runnableTasks=new ArrayList<>();
 		
 		Future<?> producer = executorService.submit(producerThread);
 		Future<?> consumer = executorService.submit(consumerThread);

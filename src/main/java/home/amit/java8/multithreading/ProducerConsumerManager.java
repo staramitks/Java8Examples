@@ -1,10 +1,10 @@
 /**
  * 
  */
-package home.amit.java.basic.multithreading;
+package home.amit.java8.multithreading;
 
 /**
- * @author singami2
+ * @author amit singh
  *
  */
 public class ProducerConsumerManager {

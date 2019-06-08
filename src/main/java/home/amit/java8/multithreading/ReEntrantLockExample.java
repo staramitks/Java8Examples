@@ -2,6 +2,7 @@ package home.amit.java8.multithreading;
 
 //Java code to illustrate Reentrant Locks 
 
+
 /*
  * 
  * Lock: This is the base interface for Lock API. It provides all the features 
@@ -19,6 +20,20 @@ The write lock is exclusive.
 ReentrantLock: This is the most widely used implementation class of Lock interface. This class implements the Lock interface in similar way as synchronized keyword. Apart from Lock interface implementation, ReentrantLock contains some utility methods to get the thread holding the lock, threads waiting to acquire the lock etc.
 synchronized block are reentrant in nature i.e if a thread has lock on the monitor object and if another synchronized block requires to have the lock on the same monitor object then thread can enter that code block. I think this is the reason for the class name to be ReentrantLock
  * 
+ * 
+ * public interface Lock {
+  void lock();
+
+  Condition newCondition();
+
+  void lockInterruptibly() throws InterruptedException;
+
+  boolean tryLock();
+
+  boolean tryLock(long time, TimeUnit unit) throws InterruptedException;
+
+  void unlock();
+}
  */
 import java.text.SimpleDateFormat; 
 import java.util.Date; 
