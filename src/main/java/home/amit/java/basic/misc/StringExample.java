@@ -14,7 +14,10 @@ public class StringExample {
 	{
 		
 		String s1= new String ("Java");
+		
 		String s2=s1.intern();
+		String s3="Java";
+		
 		if (s1==s2)
 		{
 			System.out.println("Addresses matched");
@@ -22,6 +25,11 @@ public class StringExample {
 		else
 		{
 			System.out.println("Addresses failed to match");
+		}
+		
+		if (s2==s3)
+		{
+			System.out.println("s2 and s3 matched");
 		}
 		
 		
