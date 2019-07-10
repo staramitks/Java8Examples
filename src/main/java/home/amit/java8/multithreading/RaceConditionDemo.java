@@ -2,7 +2,8 @@ package home.amit.java8.multithreading;
 /*
  * 
  * Drawback of using synchronization in java
- * it can introdue thread contention, it can occur when two or more threads try to access the same resource simultaneously 
+ * it can introdue thread contention, it can occur when two or more threads try to 
+ * access the same resource simultaneously 
  * and cause java runtime to execute one or more threads slowly 
  * Thread Starvation and livelock are forms of thead contention
  * 
