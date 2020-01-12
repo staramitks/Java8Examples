@@ -1,5 +1,6 @@
 package home.amit.java.basic.collections;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -28,6 +29,8 @@ public class PriorityQueueExample {
 		
 		PriorityQueue<Employee> empPriorityQueue= new PriorityQueue<Employee>((e1, e2)->e2.getAge()-e1.getAge());
 		List<Employee> employees = DataProvider.getEmployees();
+		Collections.sort(employees);
+		employees.stream().forEach(e->System.out.println(e.getAge()));
 		employees.stream().forEach(e->empPriorityQueue.add(e));
 		System.out.println("Length is "+empPriorityQueue.size());
 		System.out.println("Top element is "+empPriorityQueue.peek().getAge());

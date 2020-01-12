@@ -2,7 +2,7 @@ package home.amit.java.basic.dataprovider;
 
 import home.amit.java.basic.dataprovider.Person;
 
-public class Employee extends Person {
+public class Employee extends Person implements Comparable<Employee> {
 	
 	private String company;
 	private long salary;
@@ -55,6 +55,11 @@ public class Employee extends Person {
 	 */
 	public void setSalary(long salary) {
 		this.salary = salary;
+	}
+	@Override
+	public int compareTo(Employee o) {
+	return this.getAge()-o.getAge();
+		
 	}
 	
 }
